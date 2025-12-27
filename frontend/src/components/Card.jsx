@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = () => {
   return (
-    <div className="w-72 rounded-xl overflow-hidden bg-white shadow-md hover:shadow-xl transition">
+    <div className="w-72 rounded-xl overflow-hidden bg-white shadow-md hover:shadow-xl transition ">
       {/* Product Image */}
       <div className="h-44 bg-gray-100">
         <img
