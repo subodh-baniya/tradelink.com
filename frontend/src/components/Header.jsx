@@ -17,7 +17,7 @@ const Header = () => {
       </h1>
 
       <div className="flex items-center gap-5">
-        <IoNotificationsSharp className="text-2xl text-gray-600 hover:text-indigo-600 cursor-pointer" />
+        <IoNotificationsSharp className="text-2xl text-gray-600 hover:text-indigo-600 cursor-pointer" onClick={()=>{navigate("/profile")}} />
         <MdLogout
           className="text-2xl text-gray-600 hover:text-red-500 cursor-pointer"
           onClick={Logout}
