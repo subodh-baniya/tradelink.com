@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { useRef } from "react";
 
 const Post = () => {
+ const textareaRef = useRef(null);
+ const fileInputRef =useRef(null);
+
+ const [image,setImage]=useState();
+ const [description,setDescription]=useState();
+ const [price,setPrice]=useState();
+ const [preview,setPriview]=useState();
+
+  const autoResize = () => {
+    const size = textareaRef.current;
+    size.style.height = "auto";
+    size.style.height = size.scrollHeight + "px";
+  };
+
+  //code for api connection
+
   return (
     <div className="min-h-[88vh] flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8 space-y-6">
@@ -13,7 +30,7 @@ const Post = () => {
           <div className="h-32 w-32 rounded-xl border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-400 text-sm">
             <img src="" alt="photo" srcset="" />
           </div>
-          <button className="px-6 py-3 text-base bg-gray-800 text-white rounded-xl hover:bg-gray-700">
+          <button className="px-6 py-3 text-base bg-gray-800 text-white rounded-xl hover:bg-gray-700 cursor-pointer">
             Choose Image
           </button>
         </div>
@@ -23,10 +40,12 @@ const Post = () => {
           <label className="text-base text-gray-800">
             Product Description
           </label>
-          <input
-            type="text"
+          <textarea
+            ref={textareaRef}
+            rows={2}
+            onChange={autoResize}
             placeholder="Enter description"
-            className="border rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-gray-800"
+            className="border  border-gray-300  resize-none rounded-xl px-4 py-3 overflow-hidden text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
@@ -36,12 +55,12 @@ const Post = () => {
           <input
             type="text"
             placeholder="e.g. 1200"
-            className="border rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-gray-800"
+            className="border  border-gray-300  rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         {/* Post button */}
-        <button className="w-full py-3 text-lg bg-amber-600 text-white rounded-xl font-semibold hover:bg-amber-500 cursor-pointer">
+        <button className="w-full py-3 text-lg bg-amber-600 text-white rounded-xl font-semibold hover:bg-amber-700 cursor-pointer">
           Post
         </button>
       </div>
