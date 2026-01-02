@@ -28,7 +28,7 @@ const Register = () => {
 
     try {
       const response = await api.post("/api/user/register/", {
-        username: form.email, 
+        username: form.name, 
         password: form.password,
         email: form.email,
         first_name: form.name
@@ -36,7 +36,7 @@ const Register = () => {
 
       if (response.status === 201) {
         navigate("/login");
-      }
+      } 
     } catch (err) {
       const backendError = err.response?.data?.username?.[0] || "Registration failed";
       setError(backendError);
