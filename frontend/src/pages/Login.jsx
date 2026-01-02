@@ -31,7 +31,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen w-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-indigo-950 to-gray-950 relative overflow-hidden">
+    <div className="min-h-screen w-screen flex items-center justify-center bg-linear-to-br from-indigo-900 via-indigo-950 to-gray-950 relative overflow-hidden">
       
       {/* Animated wave backgrounds */}
       <div className="absolute inset-0 overflow-hidden">
