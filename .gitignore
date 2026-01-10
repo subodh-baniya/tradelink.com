@@ -20,8 +20,8 @@ db.sqlite3
 db.sqlite3-journal
 *.db
 *.sqlite
-/media
-/staticfiles
+media/
+staticfiles/
 .env
 *.env
 !frontend/.env
