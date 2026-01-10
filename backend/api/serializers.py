@@ -19,4 +19,3 @@ class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
         fields = ["id", "item_name", "description", "price", "image", "created_at", "owner"]
-        extra_kwargs = {"owner":{"read_only":True}}

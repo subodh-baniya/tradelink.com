@@ -29,11 +29,17 @@ const Post = () => {
     setPreview(URL.createObjectURL(file));
   }
 
-  const submit = async () => {
-    const token = localStorage.getItem(ACCESS_TOKEN);
-    if(!token)return;
+  const submit = async (e) => {
+
+    if (e) e.preventDefault();
+
+    if (!item_name || !price || !image) {
+        alert("Please fill in all fields and select an image.");
+        return;
+    }
+
     const form_data = new FormData();
-    form_data.append("name", item_name);
+    form_data.append("item_name", item_name);
     form_data.append("image", image);
     form_data.append("price", price);
     form_data.append("description", description);
@@ -46,7 +52,7 @@ const Post = () => {
         },
       });
 
-      if (res.status === 201) {
+      if (res.status === 201 || res.status === 200) {
         alert("Item posted successfully!");
       }
     } catch (err) {
