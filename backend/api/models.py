@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=15, unique=True, null=True, blank=True)
+    avatar = models.ImageField(upload_to="user_avatar/", null=True, blank=True)
 
 class Item(models.Model):
     item_name = models.CharField(max_length=100)

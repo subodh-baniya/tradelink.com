@@ -7,7 +7,7 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["username", "email", "phone", "password"]
+        fields = ["username", "email", "phone", "password","avatar"]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
@@ -16,7 +16,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     
 class ItemSerializer(serializers.ModelSerializer):
+    owner = UserSerializer(read_only=True)
+
     class Meta:
         model = Item
         fields = ["id", "item_name", "description", "price", "image", "created_at", "owner"]
-        extra_kwargs = {"owner":{"read_only":True}}
