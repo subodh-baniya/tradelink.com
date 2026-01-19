@@ -16,6 +16,7 @@ const Card = ({ product }) => {
           alt={product.item_name}
           className="h-full w-full object-cover"
         />
+        {/* Hover Overlay with Description */}
         
       </div>
 
