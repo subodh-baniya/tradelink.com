@@ -22,8 +22,7 @@ const Card = ({ product }) => {
 
       <div className="p-4 space-y-2">
         <p className="text-sm text-gray-600">
-          <strong>{product.item_name}</strong><br/>
-          {product.description}
+          <strong>{product.item_name}</strong>
         </p>
 
         <p className="text-lg font-semibold text-gray-900">

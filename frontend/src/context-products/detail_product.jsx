@@ -36,7 +36,7 @@ export const DetailProvider = ({ children }) => {
 
     const fetchProducts = async () => {
       try {
-        const res = await api.get("/items/"); // Axios instance with token
+        const res = await api.get("/api/items/"); // Axios instance with token
         console.log("Products JSON from API:", res.data);
         setProducts(res.data);
       } catch (err) {

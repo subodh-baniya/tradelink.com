@@ -54,7 +54,7 @@ const Post = () => {
     try {
       setSubmitting(true);
 
-      const res = await api.post("/items/", form_data, {
+      const res = await api.post("/api/items/", form_data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -19,7 +19,7 @@ export const Authprovider = ({ children }) => {
       }
 
       try {
-        const res = await api.get("/me");
+        const res = await api.get("/api/me");
         setUser(res.data);
         setIsAuthenticated(true);
       } catch {
@@ -36,7 +36,7 @@ export const Authprovider = ({ children }) => {
     const login = async (input) => {
     setError(null);
     try {
-      const res = await api.post("/token/", input); // Ensure the trailing slash is there
+      const res = await api.post("/api/token/", input); // Ensure the trailing slash is there
       const loginData = res.data;
 
       // CHANGE THIS: Look for .access, not .token
@@ -47,7 +47,7 @@ export const Authprovider = ({ children }) => {
       // CHANGE THIS: Store the access string
       localStorage.setItem(ACCESS_TOKEN, loginData.access);
       localStorage.setItem(REFRESH_TOKEN, loginData.refresh);
-      const userRes = await api.get("/me");
+      const userRes = await api.get("/api/me");
       setUser(userRes.data);
       setIsAuthenticated(true);
     } catch (err) {
