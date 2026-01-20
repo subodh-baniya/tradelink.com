@@ -5,27 +5,40 @@ import { useAuth } from '../auth/useAuth'
 import ProfileUpdate from './ProfileUpdate'
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user } = useAuth(); // Data is already coming from AuthProvider
   const [open, setOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gray-100 pb-5">
       {/* Profile Info */}
       <div className='flex flex-row items-center justify-center '>
         <div className="flex flex-col items-center mt-2 px-4">
           <img
-            src="https://via.placeholder.com/150"
+            // If your backend provides a profile picture URL, use user.profile_picture
+            src={user?.profile_picture || "https://via.placeholder.com/150"} 
             alt="profile"
             className="rounded-full border-4 border-white h-36 w-36 object-cover shadow-lg mt-3"
           />
-          <p className="mt-3 text-4xl font-bold text-gray-900">Username</p>
-          <p className="text-lg text-gray-600 mt-1">Information</p>
+          
+          {/* Use optional chaining (?.) to prevent crashes if user is null */}
+          <p className="mt-3 text-4xl font-bold text-gray-900">
+            {user?.username || "Guest User"}
+          </p>
+          
+          <p className="text-lg text-gray-600 mt-1">
+            {user?.email || "No email provided"}
+          </p>
         </div>
-        <button className="mt-4 md:mt-10 px-8 py-3 bg-indigo-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={() => { setOpen(true) }}>
+        
+        <button 
+          className="mt-4 md:mt-10 px-8 py-3 bg-indigo-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300 cursor-pointer" 
+          onClick={() => { setOpen(true) }}
+        >
           Change Profile
         </button>
       </div>
 
-      {open && <ProfileUpdate close={() => setOpen(false)} />}
+      {open && <ProfileUpdate user={user} close={() => setOpen(false)} />}
 
       <div className="grid grid-cols-1 md:grid-cols-6 gap-6 px-4 mt-8">
         {/* Notifications */}
