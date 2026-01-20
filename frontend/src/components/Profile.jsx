@@ -15,10 +15,10 @@ const Profile = () => {
 
   // Mock products for UI testing (will be replaced with real data from backend)
   const mockProducts = [
-    { id: 1, item_name: "Product 1", description: "Amazing product description", price: 1200, image: "https://via.placeholder.com/300" },
-    { id: 2, item_name: "Product 2", description: "Another great product", price: 2500, image: "https://via.placeholder.com/300" },
-    { id: 3, item_name: "Product 3", description: "Best product ever", price: 850, image: "https://via.placeholder.com/300" },
-    { id: 4, item_name: "Product 4", description: "Quality guaranteed", price: 3200, image: "https://via.placeholder.com/300" },
+    { id: 1, item_name: "Product 1", description: "product description", price: 1200, image: "https://via.placeholder.com/300" },
+    { id: 2, item_name: "Product 2", description: "product description", price: 2500, image: "https://via.placeholder.com/300" },
+    { id: 3, item_name: "Product 3", description: "prod desc", price: 850, image: "https://via.placeholder.com/300" },
+    { id: 4, item_name: "Product 4", description: "desc product", price: 3200, image: "https://via.placeholder.com/300" },
   ];
 
   const handleEditProduct = (product) => {

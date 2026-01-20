@@ -13,7 +13,7 @@ const ProductPopup = ({ product, isOpen, onClose }) => {
 
   return (
     <div 
-      className="fixed inset-0 bg-black/50 flex items-center justify-start pl-[180px] z-50 p-4"
+      className="fixed inset-0 bg-black/50 flex items-center justify-center pl-[90px] z-50 p-4"
       onClick={onClose}
     >
       <div 
