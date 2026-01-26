@@ -1,5 +1,5 @@
 // detail_product.jsx
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useMemo } from "react";
 import { DetailContext } from "./getDetail";
 import api from "../apicentralize"; // centralized axios
 import { AuthContext } from "../auth/useAuth"; // get current user (optional)
@@ -26,6 +26,8 @@ const MOCK_PRODUCTS = [
 export const DetailProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const { user, isAuthenticated } = useContext(AuthContext);
+  const [searchInput,setSearchInput]=useState('');
+  const [activeSearch,setActiveSearch]=useState("");
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -48,8 +50,19 @@ export const DetailProvider = ({ children }) => {
     fetchProducts();
   }, [isAuthenticated]); // re-fetch when login state changes
 
+  const displayProducts=useMemo(()=>{
+          if(!activeSearch.trim()) return products;
+
+            return products.filter(p =>
+      p.item_name.toLowerCase().includes(activeSearch.toLowerCase())
+    );
+
+  },[products,activeSearch]);
+
+
+
   return (
-    <DetailContext.Provider value={{ products }}>
+    <DetailContext.Provider value={{ products,displayProducts,setSearchInput,setActiveSearch,searchInput }}>
       {children}
     </DetailContext.Provider>
   );
