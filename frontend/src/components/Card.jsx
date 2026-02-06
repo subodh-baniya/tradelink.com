@@ -9,11 +9,10 @@ const Card = ({ product }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const { user } = useAuth();
-  const handleBuyClick = async (e) => {
-    e.stopPropagation();
 
-    console.log("Buyer:", "ME");
-    console.log("Product owner:", product.owner.id);
+  const handleBuyClick = async (e) => {
+    // Stop propagation if this is called from the Card's button
+    if (e) e.stopPropagation();
 
     try {
       const res = await api.post("/api/conversations/start/", {
@@ -29,7 +28,6 @@ const Card = ({ product }) => {
     }
   };
 
-  
   return (
     <>
       <div 
@@ -87,6 +85,8 @@ const Card = ({ product }) => {
         product={product}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onBuy={handleBuyClick}
+        isOwner={product.owner.id === user?.id}
       />
     </>
   );
