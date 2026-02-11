@@ -23,10 +23,12 @@ const Header = () => {
       }
     };
     fetchNotifications();
+
+      const interval = setInterval(fetchNotifications, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   const handleNotification=()=>{
-      setUnreadCount(0);
       navigate("/home/profile");
   }
 
